@@ -11,6 +11,7 @@
 	<modules>
 		<module>booleanalgebra-antlr3-stubs</module>
 		<module>booleanalgebra-processor</module>
+		<module>booleanalgebra-gui</module>
 	</modules>
 	
 	<dependencyManagement>
@@ -23,6 +24,11 @@
 			<dependency>
 				<groupId>de.inger.booleanalgebra</groupId>
 				<artifactId>booleanalgebra-processor</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.inger.booleanalgebra</groupId>
+				<artifactId>booleanalgebra-gui</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
