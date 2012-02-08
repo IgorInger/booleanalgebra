@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 	
 	<modules>
+		<module>booleanalgebra-antlr3-stubs</module>
 		<module>booleanalgebra-processor</module>
 	</modules>
 	
@@ -16,8 +17,13 @@
 		<dependencies>
 			<dependency>
 				<groupId>de.inger.booleanalgebra</groupId>
+				<artifactId>booleanalgebra-antlr3-stubs</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.inger.booleanalgebra</groupId>
 				<artifactId>booleanalgebra-processor</artifactId>
-				<version>${pom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

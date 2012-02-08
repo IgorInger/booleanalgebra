@@ -1,0 +1,140 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] boolean algebra
+[INFO] boolean algebra ANTLR3 stubs
+[INFO] boolean algebra processor
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building boolean algebra 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ booleanalgebra-commons ---
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building boolean algebra ANTLR3 stubs 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ booleanalgebra-antlr3-stubs ---
+[INFO] Deleting C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-antlr3-stubs\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ booleanalgebra-antlr3-stubs ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-antlr3-stubs\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ booleanalgebra-antlr3-stubs ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ booleanalgebra-antlr3-stubs ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-antlr3-stubs\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ booleanalgebra-antlr3-stubs ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ booleanalgebra-antlr3-stubs ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-antlr3-stubs\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+There are no tests to run.
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:jar (default-jar) @ booleanalgebra-antlr3-stubs ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-antlr3-stubs\target\booleanalgebra-antlr3-stubs-0.0.1-SNAPSHOT.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building boolean algebra processor 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ booleanalgebra-processor ---
+[INFO] Deleting C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\target
+[INFO] 
+[INFO] --- antlr3-maven-plugin:3.3:antlr (default) @ booleanalgebra-processor ---
+[INFO] ANTLR: Processing source directory C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\src\main\antlr3
+de\inger\booleanalgebra\stubs\BooleanAlgebraLexer.g
+de\inger\booleanalgebra\stubs\BooleanAlgebraParser.g
+de\inger\booleanalgebra\stubs\BooleanAlgebraTreeParser.g
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ booleanalgebra-processor ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ booleanalgebra-processor ---
+[INFO] Compiling 23 source files to C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ booleanalgebra-processor ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ booleanalgebra-processor ---
+[INFO] Compiling 2 source files to C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ booleanalgebra-processor ---
+[INFO] Surefire report directory: C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running de.inger.booleanalgebra.ParserTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 sec
+Running de.inger.booleanalgebra.TreeParserTest
+[de.inger.booleanalgebra.treenodes.AndOperator@13c5982]
+[de.inger.booleanalgebra.treenodes.OrOperator@1186fab]
+[de.inger.booleanalgebra.treenodes.NotOperator@14b7453]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@c21495]
+[de.inger.booleanalgebra.treenodes.NotEqualsOperator@1d5550d]
+[de.inger.booleanalgebra.treenodes.AssignmentOperator@c2ea3f]
+[de.inger.booleanalgebra.treenodes.Function@a0dcd9]
+[de.inger.booleanalgebra.treenodes.Call@1034bb5]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@15f5897]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@b162d5]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@1cfb549]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@186d4c1]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@f9f9d8]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@1820dda]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@15b7986]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@87816d]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@112f614]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@93dcd]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@b89838]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@111a3ac]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@110b053]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@a83b8a]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@dd20f6]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@19efb05]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@723d7c]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@22c95b]
+[de.inger.booleanalgebra.treenodes.EqualsOperator@1d1acd3]
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:jar (default-jar) @ booleanalgebra-processor ---
+[INFO] Building jar: C:\Users\Igor Inger\Workspaces\Eclipse 3.7 Java\booleanalgebra-commons\booleanalgebra-processor\target\booleanalgebra-processor-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] boolean algebra ................................... SUCCESS [0.125s]
+[INFO] boolean algebra ANTLR3 stubs ...................... SUCCESS [0.750s]
+[INFO] boolean algebra processor ......................... SUCCESS [2.180s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.180s
+[INFO] Finished at: Wed Feb 08 20:55:33 CET 2012
+[INFO] Final Memory: 13M/34M
+[INFO] ------------------------------------------------------------------------
