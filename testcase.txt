@@ -1,0 +1,3 @@
+f = knf(knf(a && b || c));
+and(a,b) = a && b;
+

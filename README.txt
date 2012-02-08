@@ -1,0 +1,18 @@
+
+
+predefined functions:
+
+knf
+dfn
+truthtable
+help
+kill
+
+
+http://jnb.ociweb.com/jnb/jnbJun2008.html
+
+http://www.fh-wedel.de/~si/vorlesungen/cb/SyntaxAnalyse/FirstFollow.html
+
+http://javadude.com/articles/antlr3xtut/
+
+http://logik.phl.univie.ac.at/~chris/cgi-bin/cgi-form?schluessel=000089c8
