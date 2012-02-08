@@ -14,7 +14,7 @@ tokens {
 
 
 @header {
-package de.inger.booleanalgebra.stubs;	
+package de.inger.booleanalgebra.antlr3.stubs;
 
 import java.io.PrintStream;
 }
@@ -29,13 +29,13 @@ import java.io.PrintStream;
 			this.out = ps;
 		}
 	}
-	
+
 	public void setErrPrintStream(PrintStream ps) {
 		if(ps != null) {
 			this.err = ps;
 		}
 	}
-	
+
 	@Override
 	public void emitErrorMessage(String message) {
 		this.err.println(message);
@@ -45,7 +45,7 @@ import java.io.PrintStream;
 	void out(Object o) {
 		this.out.println(o);
 	}
-	
+
 	private boolean isLeftToRight(int type) {
 		boolean ltr = true;
 		if(type == ASSIGN) {
@@ -53,13 +53,13 @@ import java.io.PrintStream;
 		}
 		return ltr;
 	}
-	
+
 	private int getOperatorPrecedence(int type) {
 		int precedence = 0;
 		switch(type) {
 			case NOT:
 				precedence = 3;
-				break;				
+				break;
 			case AND:
 				precedence = 13;
 				break;
@@ -75,8 +75,8 @@ import java.io.PrintStream;
 			case ASSIGN:
 				precedence = 16;
 				break;
-				
-			default:							
+
+			default:
 		}
 		return precedence;
 	}
@@ -107,14 +107,14 @@ import java.io.PrintStream;
 	    adaptor.addChild(root_1, createPrecedenceTree(expressions, operators, startIndex, pivot));
 	    adaptor.addChild(root_1, createPrecedenceTree(expressions, operators, pivot + 1, stopIndex));
 	    adaptor.addChild(root, root_1);
-	    return root;	
+	    return root;
 	}
 
 	// Create Precedence Tree
 	private Tree createPT(List<Tree> expressions, List<Token> operators) {
-		return createPrecedenceTree(expressions, operators, 0, expressions.size() - 1);	
+		return createPrecedenceTree(expressions, operators, 0, expressions.size() - 1);
 	}
-	
+
 	private Tree createParameterTree(List<Tree> expressions) {
 		adaptor.getToken(PARAMETER);
 		Token parameter = new CommonToken(PARAMETER);
@@ -128,66 +128,66 @@ import java.io.PrintStream;
 }
 
 // Start
-script: 
+script:
 	statement* EOF!;
 
 // Chunks
-variable: 
+variable:
 	ID;
 
-constant: 
+constant:
 	TRUE | FALSE;
 
-terminator: 
+terminator:
 	SEMICOLON! | EOF!;
 
 // Binary operatpr
-b_op: 
+b_op:
 	AND | OR | ASSIGN | EQUAL | NEQUAL;
 
 // Unary operatpr
-u_op: 
+u_op:
 	NOT;
 
-atom: 
+atom:
 	variable | constant;
 
 // Logic
 
-statement: 
+statement:
 	eval | define;
 
 define:
 	define_expr terminator;
-	
+
 define_expr:
 	ID LBRACE arguments RBRACE DEFINE expr -> ^(DEFINE ID arguments expr);
 
 arguments:
-	variable (COMMA variable)* -> ^(ARGUMENT variable+); 		 
+	variable (COMMA variable)* -> ^(ARGUMENT variable+);
 
 eval:
 	expr terminator;
 
 // Expression
-expr 
+expr
 @init {
-// Expressions 
+// Expressions
 List<Tree>  exprs = new ArrayList<Tree>();
-// Operators 
-List<Token> ops   = new ArrayList<Token>(); 
+// Operators
+List<Token> ops   = new ArrayList<Token>();
 } :
-	( l=sub_expr { exprs.add(l.tree); } )	
+	( l=sub_expr { exprs.add(l.tree); } )
 	( o=b_op r=sub_expr { ops.add(o.start); exprs.add(r.tree);	} )* -> { createPT(exprs, ops) };
 
-// Sub expression	
+// Sub expression
 sub_expr:
 	u_op^ sub_expr | term | (ID LBRACE parameters RBRACE) -> ^(CALL ID parameters);
 
 parameters:
-	expr (COMMA expr)* -> ^(PARAMETER expr+); 
+	expr (COMMA expr)* -> ^(PARAMETER expr+);
 
-term: 
+term:
 	atom
-	| 
+	|
 	LBRACE! expr RBRACE!;

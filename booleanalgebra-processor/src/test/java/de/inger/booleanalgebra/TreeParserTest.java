@@ -5,9 +5,9 @@ import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 
-import de.inger.booleanalgebra.stubs.BooleanAlgebraTreeParser;
+import de.inger.booleanalgebra.antlr3.stubs.treenodes.Operand;
+import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraTreeParser;
 
-import de.inger.booleanalgebra.treenodes.Operand;
 
 public class TreeParserTest {
 

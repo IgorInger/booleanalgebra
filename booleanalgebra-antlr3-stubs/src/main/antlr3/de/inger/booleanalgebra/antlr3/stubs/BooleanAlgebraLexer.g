@@ -1,9 +1,9 @@
 lexer grammar BooleanAlgebraLexer;
 
 @header {
-package de.inger.booleanalgebra.stubs;
+package de.inger.booleanalgebra.antlr3.stubs;
 
-import java.io.PrintStream;	
+import java.io.PrintStream;
 }
 
 @members {
@@ -16,13 +16,13 @@ import java.io.PrintStream;
 			this.out = ps;
 		}
 	}
-	
+
 	public void setErrPrintStream(PrintStream ps) {
 		if(ps != null) {
 			this.err = ps;
 		}
 	}
-	
+
 	@Override
 	public void emitErrorMessage(String message) {
 		this.err.println(message);
@@ -40,7 +40,7 @@ DEFINE: ':=';
 EQUAL: '==';
 NEQUAL: '!=';
 
-// Controls 
+// Controls
 
 LBRACE: '(';
 RBRACE: ')';

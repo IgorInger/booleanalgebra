@@ -1,4 +1,4 @@
-package de.inger.booleanalgebra.treenodes;
+package de.inger.booleanalgebra.antlr3.stubs.treenodes;
 
 public class Variable extends Operand {
 

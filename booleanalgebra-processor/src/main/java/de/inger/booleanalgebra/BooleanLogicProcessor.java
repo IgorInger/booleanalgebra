@@ -14,10 +14,10 @@ import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.runtime.tree.TreeNodeStream;
 
-import de.inger.booleanalgebra.stubs.BooleanAlgebraLexer;
-import de.inger.booleanalgebra.stubs.BooleanAlgebraParser;
-import de.inger.booleanalgebra.stubs.BooleanAlgebraTreeParser;
-import de.inger.booleanalgebra.stubs.BooleanAlgebraParser.script_return;
+import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraLexer;
+import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraParser;
+import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraTreeParser;
+import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraParser.script_return;
 
 public class BooleanLogicProcessor implements
 		Processor<BooleanAlgebraLexer, BooleanAlgebraParser, BooleanAlgebraTreeParser> {
