@@ -5,7 +5,7 @@ import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 
-import de.inger.booleanalgebra.antlr3.stubs.treenodes.Operand;
+import de.inger.booleanalgebra.antlr3.treenodes.Operand;
 import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraTreeParser;
 
 

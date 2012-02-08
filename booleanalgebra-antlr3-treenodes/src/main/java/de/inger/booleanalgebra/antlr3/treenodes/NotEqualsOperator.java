@@ -1,4 +1,4 @@
-package de.inger.booleanalgebra.antlr3.stubs.treenodes;
+package de.inger.booleanalgebra.antlr3.treenodes;
 
 public class NotEqualsOperator extends BinaryOperator {
 

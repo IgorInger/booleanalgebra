@@ -10,7 +10,7 @@ package de.inger.booleanalgebra.antlr3.stubs;
 
 import java.io.PrintStream;
 
-import de.inger.booleanalgebra.antlr3.stubs.treenodes.*;
+import de.inger.booleanalgebra.antlr3.treenodes.*;
 import java.util.Map;
 import java.util.HashMap;
 }
