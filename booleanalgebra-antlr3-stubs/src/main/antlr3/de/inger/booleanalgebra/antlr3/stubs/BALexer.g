@@ -1,4 +1,4 @@
-lexer grammar BooleanAlgebraLexer;
+lexer grammar BALexer;
 
 @header {
 package de.inger.booleanalgebra.antlr3.stubs;

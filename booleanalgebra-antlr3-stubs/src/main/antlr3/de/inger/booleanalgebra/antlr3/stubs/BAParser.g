@@ -1,9 +1,9 @@
-parser grammar BooleanAlgebraParser;
+parser grammar BAParser;
 
 options {
 	output = AST;
 	ASTLabelType = CommonTree;
-	tokenVocab = BooleanAlgebraLexer;
+	tokenVocab = BALexer;
 }
 
 tokens {

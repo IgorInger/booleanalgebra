@@ -4,7 +4,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 import org.junit.Test;
 
-import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraParser;
+import de.inger.booleanalgebra.antlr3.stubs.BAParser;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ public class ParserTest {
 	@Test
 	public void testSimpleExpresison() throws RecognitionException {
 		BooleanLogicProcessor processor = getProcessor();
-		BooleanAlgebraParser parser = null;
+		BAParser parser = null;
 		String text = null;
 		Tree tree = null;
 
@@ -55,7 +55,7 @@ public class ParserTest {
 	@Test
 	public void testOrderOfOperations() throws RecognitionException {
 		BooleanLogicProcessor processor = getProcessor();
-		BooleanAlgebraParser parser = null;
+		BAParser parser = null;
 		String text = null;
 		Tree tree = null;
 

@@ -6,7 +6,7 @@ import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 
 import de.inger.booleanalgebra.antlr3.treenodes.Operand;
-import de.inger.booleanalgebra.antlr3.stubs.BooleanAlgebraTreeParser;
+import de.inger.booleanalgebra.antlr3.stubs.BATreeParser;
 
 
 public class TreeParserTest {
@@ -18,7 +18,7 @@ public class TreeParserTest {
 	@Test
 	public void testSimpleExpression() throws EmptyTreeException, RecognitionException {
 		BooleanLogicProcessor processor = getProcessor();
-		BooleanAlgebraTreeParser treeParser = null;
+		BATreeParser treeParser = null;
 		List<Operand> statements = null;
 		String text = null;
 
@@ -66,7 +66,7 @@ public class TreeParserTest {
 	@Test
 	public void testDefinitions() throws EmptyTreeException, RecognitionException {
 		BooleanLogicProcessor processor = getProcessor();
-		BooleanAlgebraTreeParser treeParser = null;
+		BATreeParser treeParser = null;
 		List<Operand> statements = null;
 		String text = null;
 

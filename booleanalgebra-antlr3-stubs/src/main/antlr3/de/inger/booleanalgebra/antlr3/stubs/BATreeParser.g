@@ -1,8 +1,8 @@
-tree grammar BooleanAlgebraTreeParser;
+tree grammar BATreeParser;
 
 options {
 	ASTLabelType = CommonTree;
-	tokenVocab = BooleanAlgebraParser;
+	tokenVocab = BAParser;
 }
 
 @header {
