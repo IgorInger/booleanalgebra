@@ -4,7 +4,7 @@
 	
 	<parent>
 		<groupId>de.inger.booleanalgebra</groupId>
-		<artifactId>booleanalgebra-commons</artifactId>
+		<artifactId>booleanalgebra</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	

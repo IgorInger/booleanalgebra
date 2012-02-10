@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>de.inger.booleanalgebra</groupId>
-	<artifactId>booleanalgebra-commons</artifactId>
+	<artifactId>booleanalgebra</artifactId>
 	<name>boolean algebra</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
