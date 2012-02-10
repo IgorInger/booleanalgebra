@@ -41,11 +41,6 @@ import java.io.PrintStream;
 		this.err.println(message);
 	}
 
-
-	void out(Object o) {
-		this.out.println(o);
-	}
-
 	private boolean isLeftToRight(int type) {
 		boolean ltr = true;
 		if(type == ASSIGN) {
