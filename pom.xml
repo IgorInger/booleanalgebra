@@ -37,6 +37,10 @@
 				</goals>
 			</execution>
 		  </executions>
+		  <configuration>
+			<downloadJavadocs>true</downloadJavadocs>
+			<downloadSources>true</downloadSources>
+		  </configuration>
         </plugin>					
 		</plugins>
 		<pluginManagement>
