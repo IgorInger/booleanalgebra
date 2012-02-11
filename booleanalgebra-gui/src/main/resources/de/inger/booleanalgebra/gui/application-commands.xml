@@ -29,6 +29,10 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
+				<bean class="de.inger.booleanalgebra.gui.commands.NewFileCommand"></bean>
+				<bean class="de.inger.booleanalgebra.gui.commands.OpenFileCommand"></bean>
+				<bean class="de.inger.booleanalgebra.gui.commands.SaveFileCommand"></bean>
+				<value>separator</value>
 				<bean class="org.springframework.richclient.command.support.ExitCommand"></bean>
 			</list>
 		</property>
