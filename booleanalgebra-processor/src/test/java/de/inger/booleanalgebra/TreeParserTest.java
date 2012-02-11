@@ -14,39 +14,10 @@ public class TreeParserTest {
     }
 
     @Test
-    public void testSimpleExpression() throws EmptyTreeException, RecognitionException {
+    public void testFunctiondAndCalls() throws EmptyTreeException, RecognitionException {
 	BooleanLogicProcessor processor = getProcessor();
 	BATreeParser treeParser = null;
 	String text = null;
-
-	text = "a && a;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-
-	text = "a || a;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
-
-	text = "!a;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
-
-	text = "a == a;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
-
-	text = "a != a;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
-
-	text = "a = b;";
-	treeParser = processor.getTreeParserForString(text);
-	treeParser.script();
-	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x) := x;";
 	treeParser = processor.getTreeParserForString(text);
@@ -72,10 +43,73 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "f(x, y);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "f(x, x);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "f(true, true);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "f();";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
     }
 
     @Test
-    public void testDefinitions() throws EmptyTreeException, RecognitionException {
+    public void testBinaryOperator() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
+
+	text = "a && a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+
+	text = "a || a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "a == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "a != a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "a = b;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testAssignment() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
+
+	text = "a = b = true;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testAssotiativity() throws EmptyTreeException, RecognitionException {
 	BooleanLogicProcessor processor = getProcessor();
 	BATreeParser treeParser = null;
 	String text = null;
@@ -91,6 +125,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testIdempotence() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Idempotence
 
@@ -103,6 +144,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testCommutativity() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Commutativity
 
@@ -115,6 +163,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testAbsorption() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Absorption
 
@@ -127,6 +182,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testDistributivity() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Distributivity
 
@@ -139,6 +201,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testComplements() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Complements
 
@@ -151,6 +220,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testNeutrality() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Neutralitätsgesetze
 
@@ -163,6 +239,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testExtremality() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Extremalgesetze
 
@@ -175,6 +258,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testInvolution() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// Involution
 
@@ -182,6 +272,13 @@ public class TreeParserTest {
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    public void testDeMorgansLaws() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
 	// De Morgansche Gesetze
 
