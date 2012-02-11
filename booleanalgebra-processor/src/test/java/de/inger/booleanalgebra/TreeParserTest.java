@@ -1,6 +1,7 @@
 package de.inger.booleanalgebra;
 
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RecognizerSharedState;
 import org.hamcrest.core.IsNot;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,46 +23,55 @@ public class TreeParserTest {
 	text = "f(x) := x;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x, y) := x || y;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x, x) := x || x;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertThat(treeParser.getNumberOfSyntaxErrors(), IsNot.not(0));
 
-	text = "f() := x || x;";
+	text = "f() := y || y;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x);";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x, y);";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(x, x);";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(true, true);";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f();";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
     }
 
@@ -74,6 +84,7 @@ public class TreeParserTest {
 	text = "a && a;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "a || a;";
 	treeParser = processor.getTreeParserForString(text);

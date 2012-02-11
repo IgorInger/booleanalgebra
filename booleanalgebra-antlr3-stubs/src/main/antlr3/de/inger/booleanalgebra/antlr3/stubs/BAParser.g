@@ -156,7 +156,8 @@ define:
 	define_expr terminator;
 
 define_expr:
-	ID LBRACE arguments RBRACE DEFINE expr -> ^(DEFINE ID arguments expr);
+	ID LBRACE arguments RBRACE DEFINE expr -> ^(DEFINE ID arguments expr) |
+	ID LBRACE RBRACE DEFINE expr -> ^(DEFINE ID expr);
 
 arguments:
 	variable (COMMA variable)* -> ^(ARGUMENT variable+);
@@ -177,7 +178,7 @@ List<Token> ops   = new ArrayList<Token>();
 
 // Sub expression
 sub_expr:
-	u_op^ sub_expr | term | (ID LBRACE parameters RBRACE) -> ^(CALL ID parameters);
+	u_op^ sub_expr | term | (ID LBRACE parameters RBRACE) -> ^(CALL ID parameters) | (ID LBRACE RBRACE) -> ^(CALL ID);
 
 parameters:
 	expr (COMMA expr)* -> ^(PARAMETER expr+);

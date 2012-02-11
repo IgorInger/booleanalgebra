@@ -1,6 +1,7 @@
 package de.inger.booleanalgebra;
 
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.tree.Tree;
 import org.junit.Test;
 
@@ -24,31 +25,37 @@ public class ParserTest {
 		text = "a";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("a", tree.toStringTree());
 
 		text = "true; false; a; b;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("true false a b", tree.toStringTree());
 
 		text = "a && b; a || b; !a; a == b; a != b;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(&& a b) (|| a b) (! a) (== a b) (!= a b)", tree.toStringTree());
 
 		text = "a = true; b = a;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(= a true) (= b a)", tree.toStringTree());
 
 		text = "(a && b) || (b && c);";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(|| (&& a b) (&& b c))", tree.toStringTree());
 
 		text = "f(x) := x; f(a);";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(:= f (ARGUMENT x) x) (CALL f (PARAMETER a))", tree.toStringTree());
 	}
 
@@ -62,26 +69,31 @@ public class ParserTest {
 		text = "a || b && c;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(|| a (&& b c))", tree.toStringTree());
 
 		text = "(a || b) && c;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(&& (|| a b) c)", tree.toStringTree());
 
 		text = "a = b || c;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(= a (|| b c))", tree.toStringTree());
 
 		text = "a && b && c;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(&& (&& a b) c)", tree.toStringTree());
 
 		text = "a = b = c;";
 		parser = processor.getParserForString(text);
 		tree = (Tree) parser.script().getTree();
+		processor.setRecognizerSharedState(new RecognizerSharedState());
 		assertEquals("(= a (= b c))", tree.toStringTree());
 	}
 

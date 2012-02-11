@@ -11,8 +11,11 @@ package de.inger.booleanalgebra.antlr3.stubs;
 import java.io.PrintStream;
 
 import de.inger.booleanalgebra.antlr3.treenodes.*;
+import de.inger.booleanalgebra.antlr3.stubs.exceptions.*;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
 }
 
 @members {
@@ -50,7 +53,11 @@ eval returns [Operand result]: e=expression { result = e; };
 expression returns [Operand result]:
 	^(DEFINE n=name args=arguments r=expression)  { result = new Function(n, args, r); }
 	|
+	^(DEFINE n=name r=expression) { result = new Function(n, r); }
+	|
 	^(CALL n=name p=parameters)  { result = new Call(n, p); }
+	|
+	^(CALL n=name)  { result = new Call(n); }
 	|
 	^(ASSIGN l=variable r=expression) { result = new AssignmentOperator(l, r); }
 	|
@@ -66,11 +73,11 @@ expression returns [Operand result]:
 	|
 	a=atom  { result = a; };
 
-arguments returns [List<String> result]
+arguments returns [Set<String> result]
 @init {
-	result = new ArrayList<String>();
+	result = new HashSet<String>();
 }:
-	^(ARGUMENT (n=name { result.add(n); } )+);
+	^(ARGUMENT (n=name { boolean contains = result.add(n); if(!contains) {throw new DuplicateArgumentException(input, n);} } )+);
 
 parameters returns [List<Operand> result]
 @init {

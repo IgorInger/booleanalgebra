@@ -1,41 +1,46 @@
 package de.inger.booleanalgebra.antlr3.treenodes;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.Set;
 
 public class Function extends Operand {
 
-	private String name;
-	private List<String> arguments;
-	private Operand body;
+    private String name;
+    private Set<String> arguments;
+    private Operand body;
 
-	public Function(String name, List<String> arguments, Operand body) {
-		setName(name);
-		setArguments(arguments);
-		setBody(body);
-	}
+    public Function(String name, Set<String> arguments, Operand body) {
+	setName(name);
+	setArguments(arguments);
+	setBody(body);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Function(String name, Operand body) {
+	this(name, Collections.<String> emptySet(), body);
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+	return name;
+    }
 
-	public List<String> getArguments() {
-		return arguments;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public void setArguments(List<String> arguments) {
-		this.arguments = arguments;
-	}
+    public Set<String> getArguments() {
+	return arguments;
+    }
 
-	public Operand getBody() {
-		return body;
-	}
+    public void setArguments(Set<String> arguments) {
+	this.arguments = arguments;
+    }
 
-	public void setBody(Operand body) {
-		this.body = body;
-	}
+    public Operand getBody() {
+	return body;
+    }
+
+    public void setBody(Operand body) {
+	this.body = body;
+    }
 
 }
