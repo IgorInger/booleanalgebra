@@ -1,190 +1,199 @@
 package de.inger.booleanalgebra;
 
-import java.util.List;
-
 import org.antlr.runtime.RecognitionException;
+import org.hamcrest.core.IsNot;
+import org.junit.Assert;
 import org.junit.Test;
 
-import de.inger.booleanalgebra.antlr3.treenodes.Operand;
 import de.inger.booleanalgebra.antlr3.stubs.BATreeParser;
-
 
 public class TreeParserTest {
 
-	public BooleanLogicProcessor getProcessor() {
-		return new BooleanLogicProcessor();
-	}
+    public BooleanLogicProcessor getProcessor() {
+	return new BooleanLogicProcessor();
+    }
 
-	@Test
-	public void testSimpleExpression() throws EmptyTreeException, RecognitionException {
-		BooleanLogicProcessor processor = getProcessor();
-		BATreeParser treeParser = null;
-		List<Operand> statements = null;
-		String text = null;
+    @Test
+    public void testSimpleExpression() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
-		text = "a && a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "a && a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
 
-		text = "a || a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "a || a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "!a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "!a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "a == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "a == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "a != a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "a != a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "a = b;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "a = b;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "f(x) := x;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "f(x) := x;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "f(x);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
-	}
+	text = "f(x, y) := x || y;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-	@Test
-	public void testDefinitions() throws EmptyTreeException, RecognitionException {
-		BooleanLogicProcessor processor = getProcessor();
-		BATreeParser treeParser = null;
-		List<Operand> statements = null;
-		String text = null;
+	text = "f(x, x) := x || x;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertThat(treeParser.getNumberOfSyntaxErrors(), IsNot.not(0));
 
-		// Assotiativity
+	text = "f() := x || x;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a || (b || c)) == ((a || b) || c);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "f(x);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
 
-		text = "(a && (b && c)) == ((a && b) && c);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+    @Test
+    public void testDefinitions() throws EmptyTreeException, RecognitionException {
+	BooleanLogicProcessor processor = getProcessor();
+	BATreeParser treeParser = null;
+	String text = null;
 
-		// Idempotence
+	// Assotiativity
 
-		text = "(a && a) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || (b || c)) == ((a || b) || c);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a || a) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && (b && c)) == ((a && b) && c);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Commutativity
+	// Idempotence
 
-		text = "(a || b) == (b || a);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && a) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a && b) == (b && a);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || a) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Absorption
+	// Commutativity
 
-		text = "(a || (a && b)) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || b) == (b || a);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a && (a || b)) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && b) == (b && a);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Distributivity
+	// Absorption
 
-		text = "(a || (b && c)) == ((a || b) && (a || c));";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || (a && b)) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a && (b || c)) == ((a && b) || (a && c));";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && (a || b)) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Complements
+	// Distributivity
 
-		text = "(a || !a) == true;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || (b && c)) == ((a || b) && (a || c));";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a && !a) == false;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && (b || c)) == ((a && b) || (a && c));";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Neutralitätsgesetze
+	// Complements
 
-		text = "(a && true) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || !a) == true;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a || false) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && !a) == false;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Extremalgesetze
+	// Neutralitätsgesetze
 
-		text = "(a && false) == false;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && true) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(a || true) == true;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a || false) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// Involution
+	// Extremalgesetze
 
-		text = "(!!a) == a;";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(a && false) == false;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		// De Morgansche Gesetze
+	text = "(a || true) == true;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-		text = "(!(a && b)) == (!a || !b);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	// Involution
 
-		text = "(!(a || b)) == (!a && !b);";
-		treeParser = processor.getTreeParserForString(text);
-		statements = treeParser.script();
-		System.out.println(statements);
+	text = "(!!a) == a;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
-	}
+	// De Morgansche Gesetze
+
+	text = "(!(a && b)) == (!a || !b);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "(!(a || b)) == (!a && !b);";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+    }
 
 }
