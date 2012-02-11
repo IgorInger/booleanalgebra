@@ -12,6 +12,7 @@ public class OpenFileCommand extends ApplicationWindowAwareCommand {
 
     @Override
     protected void doExecuteCommand() {
+	System.out.println("open");
     }
 
 }
