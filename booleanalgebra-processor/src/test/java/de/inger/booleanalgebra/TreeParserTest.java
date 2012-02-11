@@ -38,6 +38,12 @@ public class TreeParserTest {
 	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertThat(treeParser.getNumberOfSyntaxErrors(), IsNot.not(0));
 
+	text = "f(x, true) := x || x;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
+	Assert.assertThat(treeParser.getNumberOfSyntaxErrors(), IsNot.not(0));
+
 	text = "f() := y || y;";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
