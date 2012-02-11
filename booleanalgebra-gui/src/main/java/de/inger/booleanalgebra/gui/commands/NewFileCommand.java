@@ -1,6 +1,5 @@
 package de.inger.booleanalgebra.gui.commands;
 
-
 import org.springframework.richclient.command.support.ApplicationWindowAwareCommand;
 
 public class NewFileCommand extends ApplicationWindowAwareCommand {

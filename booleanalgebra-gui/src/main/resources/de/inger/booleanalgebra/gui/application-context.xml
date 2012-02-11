@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
@@ -71,6 +71,22 @@
 
 	<bean id="applicationPageFactory" depends-on="serviceLocator"
 		class="org.springframework.richclient.application.docking.vldocking.VLDockingApplicationPageFactory">
+	</bean>
+
+	<bean id="imageResourcesFactory"
+		class="org.springframework.context.support.ResourceMapFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:org/springframework/richclient/image/images.properties</value>
+				<value>classpath:de/inger/booleanalgebra/gui/images.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="imageSource" class="org.springframework.richclient.image.DefaultImageSource">
+		<constructor-arg index="0" ref="imageResourcesFactory" />
+		<property name="brokenImageIndicator"
+			value="/org/springframework/richclient/images/alert/error_obj.gif" />
 	</bean>
 
 
