@@ -17,6 +17,7 @@ tokens {
 package de.inger.booleanalgebra.antlr3.stubs;
 
 import java.io.PrintStream;
+import de.inger.booleanalgebra.antlr3.stubs.exceptions.*;
 }
 
 @members {
@@ -40,6 +41,11 @@ import java.io.PrintStream;
 	public void emitErrorMessage(String message) {
 		this.err.println(message);
 	}
+
+    @Override
+    public String getErrorHeader(RecognitionException e) {
+        return ErrorHeaderHelper.getErrorHeader(e);
+    }
 
 	private boolean isLeftToRight(int type) {
 		boolean ltr = true;

@@ -40,6 +40,11 @@ import java.util.HashSet;
 		this.err.println(message);
 	}
 
+    @Override
+    public String getErrorHeader(RecognitionException e) {
+        return ErrorHeaderHelper.getErrorHeader(e);
+    }
+
 }
 
 script returns [List<Operand> result]
