@@ -10,13 +10,16 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
-				<bean class="de.inger.booleanalgebra.gui.commands.NewFileCommand"></bean>
-				<bean class="de.inger.booleanalgebra.gui.commands.SaveFileCommand"></bean>
+				<ref bean="newFileCommand" />
+				<ref bean="openFileCommand" />
+				<ref bean="saveFileCommand" />
 				<value>separator</value>
-				<bean class="de.inger.booleanalgebra.gui.commands.ExecuteCommand"></bean>
+				<ref bean="executeCommand" />
 			</list>
 		</property>
 	</bean>
+
+	<!-- Menu -->
 
 	<bean id="menubar"
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
@@ -34,11 +37,11 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
-				<bean class="de.inger.booleanalgebra.gui.commands.NewFileCommand"></bean>
-				<bean class="de.inger.booleanalgebra.gui.commands.OpenFileCommand"></bean>
-				<bean class="de.inger.booleanalgebra.gui.commands.SaveFileCommand"></bean>
+				<ref bean="newFileCommand" />
+				<ref bean="openFileCommand" />
+				<ref bean="saveFileCommand" />
 				<value>separator</value>
-				<bean class="org.springframework.richclient.command.support.ExitCommand"></bean>
+				<ref bean="exitCommand" />
 			</list>
 		</property>
 	</bean>
@@ -47,11 +50,6 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
-				<bean class="de.inger.booleanalgebra.gui.commands.NewFileCommand"></bean>
-				<bean class="de.inger.booleanalgebra.gui.commands.OpenFileCommand"></bean>
-				<bean class="de.inger.booleanalgebra.gui.commands.SaveFileCommand"></bean>
-				<value>separator</value>
-				<bean class="org.springframework.richclient.command.support.ExitCommand"></bean>
 			</list>
 		</property>
 	</bean>
@@ -61,10 +59,10 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
-				<bean
-					class="org.springframework.richclient.command.support.NewWindowCommand" />
+				<ref bean="newWindowCommand" />
 				<value>separator</value>
-				<bean class="org.springframework.richclient.command.support.ShowViewMenu" />
+				<ref bean="showViewMenu" />
+
 			</list>
 		</property>
 	</bean>
@@ -73,10 +71,27 @@
 		class="org.springframework.richclient.command.CommandGroupFactoryBean">
 		<property name="members">
 			<list>
-				<bean class="org.springframework.richclient.command.support.AboutCommand"></bean>
+				<ref bean="aboutCommand" />
 			</list>
 		</property>
 	</bean>
+
+	<bean id="showViewMenu"
+		class="org.springframework.richclient.command.support.ShowViewMenu" />
+
+	<!-- Commands -->
+
+	<bean id="newFileCommand" class="de.inger.booleanalgebra.gui.commands.NewFileCommand"></bean>
+	<bean id="saveFileCommand" class="de.inger.booleanalgebra.gui.commands.SaveFileCommand"></bean>
+	<bean id="openFileCommand" class="de.inger.booleanalgebra.gui.commands.OpenFileCommand"></bean>
+	<bean id="exitCommand"
+		class="org.springframework.richclient.command.support.ExitCommand"></bean>
+	<bean id="aboutCommand"
+		class="org.springframework.richclient.command.support.AboutCommand"></bean>
+	<bean id="executeCommand" class="de.inger.booleanalgebra.gui.commands.ExecuteCommand"></bean>
+	<bean id="newWindowCommand"
+		class="org.springframework.richclient.command.support.NewWindowCommand"></bean>
+
 
 
 </beans>
