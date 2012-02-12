@@ -7,10 +7,10 @@ import org.springframework.richclient.application.support.AbstractView;
 
 public class InputTextView extends AbstractView {
 
-	@Override
-	protected JComponent createControl() {
-		JTextArea area = getComponentFactory().createTextArea();
-		return area;
-	}
+    @Override
+    protected JComponent createControl() {
+	JTextArea area = getComponentFactory().createTextArea();
+	return area;
+    }
 
 }
