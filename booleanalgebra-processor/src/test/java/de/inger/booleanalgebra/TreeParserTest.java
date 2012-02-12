@@ -50,6 +50,12 @@ public class TreeParserTest {
 	processor.setRecognizerSharedState(new RecognizerSharedState());
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
+	text = "a = f() := y || y;";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
+	Assert.assertThat(treeParser.getNumberOfSyntaxErrors(), IsNot.not(0));
+
 	text = "f(x);";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
@@ -81,6 +87,12 @@ public class TreeParserTest {
 	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
 
 	text = "f(f(x));";
+	treeParser = processor.getTreeParserForString(text);
+	treeParser.script();
+	processor.setRecognizerSharedState(new RecognizerSharedState());
+	Assert.assertEquals(0, treeParser.getNumberOfSyntaxErrors());
+
+	text = "a = f();";
 	treeParser = processor.getTreeParserForString(text);
 	treeParser.script();
 	processor.setRecognizerSharedState(new RecognizerSharedState());
