@@ -1,101 +1,95 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>de.inger.booleanalgebra</groupId>
-	<artifactId>booleanalgebra</artifactId>
-	<name>boolean algebra</name>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	
-	<modules>
-		<module>booleanalgebra-antlr3-treenodes</module>
-		<module>booleanalgebra-antlr3-stubs</module>
-		<module>booleanalgebra-processor</module>
-		<module>booleanalgebra-gui</module>
-	</modules>
-	
-	<scm>
-		<connection>scm:git:git@github.com:IgorInger/booleanalgebra.git</connection>
-		<url>scm:git:git@github.com:IgorInger/booleanalgebra.git</url>
-		<developerConnection>scm:git:git@github.com:IgorInger/booleanalgebra.git</developerConnection>
-	</scm>	
-	
-	<build>
-		<plugins>
-			<plugin>
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.inger.booleanalgebra</groupId>
+  <artifactId>booleanalgebra</artifactId>
+  <name>boolean algebra</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>booleanalgebra-antlr3-treenodes</module>
+    <module>booleanalgebra-antlr3-stubs</module>
+    <module>booleanalgebra-processor</module>
+    <module>booleanalgebra-gui</module>
+  </modules>
+  <scm>
+    <connection>scm:git:git@github.com:IgorInger/booleanalgebra.git</connection>
+    <url>scm:git:git@github.com:IgorInger/booleanalgebra.git</url>
+    <developerConnection>scm:git:git@github.com:IgorInger/booleanalgebra.git</developerConnection>
+  </scm>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+            <id>eclipse-clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>eclipse-eclipse</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>eclipse</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <downloadJavadocs>true</downloadJavadocs>
+          <downloadSources>true</downloadSources>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-eclipse-plugin</artifactId>
-          <version>2.8</version>
-		  <executions>
-			<execution>
-				<id>eclipse-clean</id>
-				<phase>clean</phase>
-				<goals>
-					<goal>clean</goal>
-				</goals>
-			</execution>
-			<execution>
-				<id>eclipse-eclipse</id>
-				<phase>compile</phase>
-				<goals>
-					<goal>eclipse</goal>
-				</goals>
-			</execution>
-		  </executions>
-		  <configuration>
-			<downloadJavadocs>true</downloadJavadocs>
-			<downloadSources>true</downloadSources>
-		  </configuration>
-        </plugin>					
-		</plugins>
-		<pluginManagement>
-			<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>						  
-			<plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>2.5</version>
           <configuration>
             <encoding>UTF-8</encoding>
           </configuration>
-        </plugin>			
-			</plugins>
-		</pluginManagement>
-	</build>	
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>de.inger.booleanalgebra</groupId>
-				<artifactId>booleanalgebra-antlr3-treenodes</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.inger.booleanalgebra</groupId>
-				<artifactId>booleanalgebra-antlr3-stubs</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.inger.booleanalgebra</groupId>
-				<artifactId>booleanalgebra-processor</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.inger.booleanalgebra</groupId>
-				<artifactId>booleanalgebra-gui</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>de.inger.booleanalgebra</groupId>
+        <artifactId>booleanalgebra-antlr3-treenodes</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.inger.booleanalgebra</groupId>
+        <artifactId>booleanalgebra-antlr3-stubs</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.inger.booleanalgebra</groupId>
+        <artifactId>booleanalgebra-processor</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.inger.booleanalgebra</groupId>
+        <artifactId>booleanalgebra-gui</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
