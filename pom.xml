@@ -7,10 +7,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>booleanalgebra-antlr3-treenodes</module>
-    <module>booleanalgebra-antlr3-stubs</module>
-    <module>booleanalgebra-processor</module>
-    <module>booleanalgebra-gui</module>
+    <module>antlr3-treenodes</module>
+    <module>antlr3-stubs</module>
+    <module>processor</module>
+    <module>gui</module>
   </modules>
   <scm>
     <connection>scm:git:git@github.com:IgorInger/booleanalgebra.git</connection>
