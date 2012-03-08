@@ -1,46 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>de.inger.booleanalgebra</groupId>
-		<artifactId>booleanalgebra</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	
-	<groupId>de.inger.booleanalgebra</groupId>
-	<artifactId>booleanalgebra-antlr3-stubs</artifactId>
-	<name>boolean algebra ANTLR3 stubs</name>
-
-	<build>
-		<plugins>			
-			<plugin>
-				<groupId>org.antlr</groupId>
-				<artifactId>antlr3-maven-plugin</artifactId>
-				<version>3.4</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>antlr</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-	
-	<dependencies>
-		<!-- Internal -->
-		<dependency>
-			<groupId>de.inger.booleanalgebra</groupId>
-			<artifactId>booleanalgebra-antlr3-treenodes</artifactId>
-		</dependency>
-		<!-- External -->
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr-runtime</artifactId>
-			<version>3.4</version>
-		</dependency>
-	</dependencies>
-
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>de.inger.booleanalgebra</groupId>
+    <artifactId>booleanalgebra</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>de.inger.booleanalgebra</groupId>
+  <artifactId>booleanalgebra-antlr3-stubs</artifactId>
+  <name>boolean algebra ANTLR3 stubs</name>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr3-maven-plugin</artifactId>
+        <version>3.4</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>antlr</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <!-- Internal -->
+    <dependency>
+      <groupId>de.inger.booleanalgebra</groupId>
+      <artifactId>booleanalgebra-antlr3-treenodes</artifactId>
+    </dependency>
+    <!-- External -->
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr-runtime</artifactId>
+      <version>3.4</version>
+    </dependency>
+  </dependencies>
 </project>

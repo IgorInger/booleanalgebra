@@ -42,7 +42,7 @@
         <configuration>
           <downloadJavadocs>true</downloadJavadocs>
           <downloadSources>true</downloadSources>
-		  <useProjectReferences>true</useProjectReferences>
+          <useProjectReferences>true</useProjectReferences>
         </configuration>
       </plugin>
     </plugins>
