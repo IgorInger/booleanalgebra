@@ -38,6 +38,9 @@ public class NewFileCommand extends ApplicationWindowAwareCommand {
 	beanDefinition.setBeanClass(VLDockingViewDescriptor.class);
 	MutablePropertyValues values = new MutablePropertyValues();
 	values.addPropertyValue("viewClass", InputTextView.class.getName());
+	values.addPropertyValue("autoHideEnabled", true);
+	values.addPropertyValue("closeEnabled", true);
+	values.addPropertyValue("floatEnabled", true);
 	beanDefinition.setPropertyValues(values);
 
 	BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) factory;
@@ -54,6 +57,8 @@ public class NewFileCommand extends ApplicationWindowAwareCommand {
 	actionCommand.setLabel("xx");
 
 	ac.add(actionCommand, true);
+
+	actionCommand.execute();
     }
 
 }
