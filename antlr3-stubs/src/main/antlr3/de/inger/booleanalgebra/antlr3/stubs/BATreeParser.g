@@ -92,6 +92,7 @@ parameters returns [List<Operand> result]
 
 name returns [String result]:
 	n=ID {result = n.getText(); };
+	catch[java.util.NoSuchElementException e] {}
 
 variable returns [Operand result]:
 	n=name { result = new Variable(n); };
