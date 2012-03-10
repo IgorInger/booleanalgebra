@@ -47,4 +47,8 @@ public class Call extends Operand {
 	this.parameters = parameters;
     }
 
+    @Override
+    public void ReplaceChild(Operand oldChild, Operand newChild) {
+    }
+
 }

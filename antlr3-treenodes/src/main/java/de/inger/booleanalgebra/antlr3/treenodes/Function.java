@@ -43,4 +43,8 @@ public class Function extends Operand {
 	this.body = body;
     }
 
+    @Override
+    public void ReplaceChild(Operand oldChild, Operand newChild) {
+    }
+
 }

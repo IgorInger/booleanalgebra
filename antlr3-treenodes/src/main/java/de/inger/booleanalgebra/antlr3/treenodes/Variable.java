@@ -16,4 +16,8 @@ public class Variable extends Operand {
 		this.name = name;
 	}
 
+	@Override
+	public void ReplaceChild(Operand oldChild, Operand newChild) {
+	}
+
 }
