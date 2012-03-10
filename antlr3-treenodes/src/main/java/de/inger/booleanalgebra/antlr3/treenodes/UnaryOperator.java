@@ -2,18 +2,18 @@ package de.inger.booleanalgebra.antlr3.treenodes;
 
 public abstract class UnaryOperator extends Operator {
 
-	private TreeNode operand;
+	private Operand operand;
 
-	public UnaryOperator(TreeNode operand) {
+	public UnaryOperator(Operand operand) {
 		operand.setParent(this);
 		setOperand(operand);
 	}
 
-	public TreeNode getOperand() {
+	public Operand getOperand() {
 		return this.operand;
 	}
 
-	public void setOperand(TreeNode operand) {
+	public void setOperand(Operand operand) {
 		this.operand = operand;
 	}
 
