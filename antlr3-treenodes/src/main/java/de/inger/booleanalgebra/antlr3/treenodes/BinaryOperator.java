@@ -32,7 +32,7 @@ public abstract class BinaryOperator extends Operator {
     }
 
     @Override
-    public void ReplaceChild(Operand oldChild, Operand newChild) {
+    public void replaceChild(Operand oldChild, Operand newChild) {
 	if (getLeftOperand() == oldChild) {
 	    setLeftOperand(newChild);
 	}

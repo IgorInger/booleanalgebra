@@ -15,5 +15,7 @@ public abstract class Operand {
 	this.parent = parent;
     }
 
-    public abstract void ReplaceChild(Operand oldChild, Operand newChild);
+    public abstract void replaceChild(Operand oldChild, Operand newChild);
+
+    public abstract String toTreeString();
 }

@@ -17,7 +17,12 @@ public class Constant extends Operand {
     }
 
     @Override
-    public void ReplaceChild(Operand oldChild, Operand newChild) {
+    public void replaceChild(Operand oldChild, Operand newChild) {
+    }
+
+    @Override
+    public String toTreeString() {
+	return Boolean.toString(value);
     }
 
 }

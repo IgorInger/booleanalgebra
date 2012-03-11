@@ -16,10 +16,10 @@ public class TreeWalkerTest {
     @Test
     public void simpleTest() throws EmptyTreeException, RecognitionException {
 	BooleanLogicProcessor processor = new BooleanLogicProcessor();
-	BATreeParser parser = processor.getTreeParserForString("a && a == a");
+	BATreeParser parser = processor.getTreeParserForString("a = a && true && a && (true && a)");
 	List<Operand> operands = parser.script();
 	Operand operand = IdempotenceSimplifier.simplify(operands.get(0));
-	System.out.println(operand);
+	System.out.println(operand.toTreeString());
     }
 
 }

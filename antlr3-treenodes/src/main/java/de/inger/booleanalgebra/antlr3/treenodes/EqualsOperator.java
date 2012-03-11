@@ -6,4 +6,10 @@ public class EqualsOperator extends BinaryOperator {
 		super(left, right);
 	}
 
+	@Override
+	public String toTreeString() {
+	    // TODO Auto-generated method stub
+	    return null;
+	}
+
 }

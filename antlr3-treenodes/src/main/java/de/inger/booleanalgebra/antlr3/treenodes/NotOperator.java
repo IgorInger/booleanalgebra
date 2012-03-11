@@ -6,4 +6,10 @@ public class NotOperator extends UnaryOperator {
 		super(operand);
 	}
 
+	@Override
+	public String toTreeString() {
+	    // TODO Auto-generated method stub
+	    return null;
+	}
+
 }

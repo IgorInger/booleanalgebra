@@ -48,7 +48,13 @@ public class Call extends Operand {
     }
 
     @Override
-    public void ReplaceChild(Operand oldChild, Operand newChild) {
+    public void replaceChild(Operand oldChild, Operand newChild) {
+    }
+
+    @Override
+    public String toTreeString() {
+	// TODO Auto-generated method stub
+	return null;
     }
 
 }
