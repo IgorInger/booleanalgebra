@@ -9,4 +9,10 @@
   <groupId>de.inger.booleanalgebra</groupId>
   <artifactId>booleanalgebra-antlr3-treenodes</artifactId>
   <name>boolean algebra ANTLR3 treenodes</name>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
 </project>

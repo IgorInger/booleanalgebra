@@ -2,33 +2,38 @@ package de.inger.booleanalgebra.antlr3.treenodes;
 
 public abstract class BinaryOperator extends Operator {
 
-    private Operand leftOperand;
-
-    private Operand rightOperand;
+    public static final int LEFT_OPERAND_INDEX = 0;
+    public static final int RIGHT_OPERAND_INDEX = 1;
 
     public BinaryOperator(Operand left, Operand right) {
-	left.setParent(this);
-	right.setParent(this);
 	setLeftOperand(left);
 	setRightOperand(right);
     }
 
     public Operand getLeftOperand() {
-	return leftOperand;
+	return getChild(0);
     }
 
     public void setLeftOperand(Operand operand) {
-	this.leftOperand = operand;
-	this.leftOperand.setParent(this);
+	operand.setParent(this);
+	if (childCount() == 0) {
+	    addChild(operand);
+	} else {
+	    setChild(0, operand);
+	}
     }
 
     public Operand getRightOperand() {
-	return rightOperand;
+	return getChild(1);
     }
 
     public void setRightOperand(Operand operand) {
-	this.rightOperand = operand;
-	this.rightOperand.setParent(this);
+	operand.setParent(this);
+	if (childCount() == 1) {
+	    addChild(operand);
+	} else {
+	    setChild(1, operand);
+	}
     }
 
     @Override
