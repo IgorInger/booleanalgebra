@@ -15,7 +15,7 @@ import de.inger.booleanalgebra.antlr3.stubs.exceptions.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 }
 
 @members {
@@ -80,7 +80,7 @@ expression returns [Operand result]:
 
 arguments returns [Set<String> result]
 @init {
-	result = new HashSet<String>();
+	result = new LinkedHashSet<String>();
 }:
 	^(ARGUMENT (n=name { boolean contains = result.add(n); if(!contains) {throw new DuplicateArgumentException(input, n);} } )+);
 
