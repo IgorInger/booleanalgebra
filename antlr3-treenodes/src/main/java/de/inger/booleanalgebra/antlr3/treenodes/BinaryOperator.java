@@ -40,9 +40,13 @@ public abstract class BinaryOperator extends Operator {
     public void replaceChild(Operand oldChild, Operand newChild) {
 	if (getLeftOperand().equals(oldChild)) {
 	    setLeftOperand(newChild);
+	} else {
+	    getLeftOperand().replaceChild(oldChild, newChild);
 	}
 	if (getRightOperand().equals(oldChild)) {
 	    setRightOperand(newChild);
+	} else {
+	    getRightOperand().replaceChild(oldChild, newChild);
 	}
     }
 

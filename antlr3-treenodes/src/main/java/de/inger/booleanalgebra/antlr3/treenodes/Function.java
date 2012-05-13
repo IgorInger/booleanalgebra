@@ -49,8 +49,10 @@ public class Function extends Operand {
 
     @Override
     public String toTreeString() {
-	// TODO Auto-generated method stub
-	return null;
+	String arguments = getArguments().toString();
+	arguments = arguments.replace("[", "");
+	arguments = arguments.replace("]", "");
+	return String.format("%s(%s) = %s", getName(), arguments, getBody().toTreeString());
     }
 
 }

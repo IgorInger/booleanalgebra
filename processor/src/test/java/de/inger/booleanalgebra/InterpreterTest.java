@@ -13,7 +13,7 @@ public class InterpreterTest {
     @Test
     public void testInterpreter() throws EmptyTreeException, RecognitionException {
         BooleanLogicProcessor processor = new BooleanLogicProcessor();
-        BATreeParser treeParser = processor.getTreeParserForString("a = true; a; f(a, b) := a || b; f(x1 || x3, x2);");
+        BATreeParser treeParser = processor.getTreeParserForString("a = true; true; false; a; f(a, b, c) := a || b || c; f(a || a, a, a);");
         List<Operand> operands = treeParser.script();
         BooleanLogicInterpreter interpreter = new BooleanLogicInterpreter();
         interpreter.interprete(operands);
