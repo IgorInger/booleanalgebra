@@ -25,4 +25,22 @@ public class Variable extends Operand {
 	return name;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+	if(obj == null) {
+	    return false;
+	}
+	if(this == obj) {
+	    return true;
+	}
+	if(!(obj instanceof Variable)) {
+	    return false;
+	}
+	Variable a = (Variable) obj;
+	if(getName().equals(a.getName())) {
+	    return true;
+	}
+	return false;
+    }
+
 }

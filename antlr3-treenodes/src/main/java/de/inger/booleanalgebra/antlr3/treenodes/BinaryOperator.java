@@ -38,10 +38,10 @@ public abstract class BinaryOperator extends Operator {
 
     @Override
     public void replaceChild(Operand oldChild, Operand newChild) {
-	if (getLeftOperand() == oldChild) {
+	if (getLeftOperand().equals(oldChild)) {
 	    setLeftOperand(newChild);
 	}
-	if (getRightOperand() == oldChild) {
+	if (getRightOperand().equals(oldChild)) {
 	    setRightOperand(newChild);
 	}
     }
