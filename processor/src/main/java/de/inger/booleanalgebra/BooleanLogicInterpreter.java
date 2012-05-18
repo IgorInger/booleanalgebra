@@ -36,25 +36,25 @@ public class BooleanLogicInterpreter {
 
     public void interprete(List<Operand> operands) {
 	for (Operand operand : operands) {
-	    interprete(operand);
+	    interprete(operand, false);
 	}
     }
 
-    private Operand interprete(Operand operand) {
+    private Operand interprete(Operand operand, boolean omitOutput) {
 	if (operand instanceof AssignmentOperator) {
-	    return interpreteAssignmentOperator((AssignmentOperator) operand);
+	    return interpreteAssignmentOperator((AssignmentOperator) operand, false);
 	} else if (operand instanceof Variable) {
-	    return interpreteVariable((Variable) operand);
+	    return interpreteVariable((Variable) operand, false);
 	} else if (operand instanceof Function) {
-	    return interpreteFunction((Function) operand);
+	    return interpreteFunction((Function) operand, false);
 	} else if (operand instanceof Call) {
-	    return interpreteCall((Call) operand);
+	    return interpreteCall((Call) operand, false);
 	} else if (operand instanceof OrOperator) {
-	    return interpreteOrOperator((OrOperator) operand);
+	    return interpreteOrOperator((OrOperator) operand, false);
 	} else if (operand instanceof EqualsOperator) {
-	    return interpreteEqualsOperator((EqualsOperator) operand);
+	    return interpreteEqualsOperator((EqualsOperator) operand, false);
 	} else if(operand instanceof Constant) {
-	    return interpreteConstant((Constant) operand);
+	    return interpreteConstant((Constant) operand, false);
 	}
 	else {
 	    logger.debug(operand.getClass());
@@ -62,27 +62,27 @@ public class BooleanLogicInterpreter {
 	return operand;
     }
 
-    private Operand interpreteConstant(Constant operand) {
-	output.println(operand.toTreeString());
+    private Operand interpreteConstant(Constant operand, boolean omitOutput) {
+	println(operand.toTreeString());
 	return operand;
     }
 
-    private Operand interpreteEqualsOperator(EqualsOperator operand) {
+    private Operand interpreteEqualsOperator(EqualsOperator operand, boolean omitOutput) {
 	Operand left = operand.getLeftOperand();
 	Operand right = operand.getRightOperand();
 	if((left instanceof Constant) && (right instanceof Constant)) {
 
 	}
-	output.println("? true/false");
+	println("? true/false");
 	return operand;
     }
 
-    private Operand interpreteOrOperator(OrOperator or) {
-	output.println(or.toTreeString());
+    private Operand interpreteOrOperator(OrOperator or, boolean omitOutput) {
+	println(or.toTreeString());
 	return or;
     }
 
-    private Operand interpreteCall(Call c) {
+    private Operand interpreteCall(Call c, boolean omitOutput) {
 	String name = c.getName();
 	List<Operand> parameters = c.getParameters();
 	String signature = String.format("%s@%d", name, parameters.size());
@@ -93,10 +93,10 @@ public class BooleanLogicInterpreter {
 	Operand body = functions.get(signature);
 	Set<String> arguments = functionArguments.get(signature);
 	for(int i = 0; i < parameters.size(); i++) {
-	    parameters.set(i, interprete(parameters.get(i)));
+	    parameters.set(i, interprete(parameters.get(i), true));
 	}
 	Operand operand = buildExpression(body, arguments, parameters);
-	return interprete(operand);
+	return interprete(operand, false);
     }
 
     private Operand buildExpression(Operand body, Set<String> arguments, List<Operand> parameters) {
@@ -110,34 +110,45 @@ public class BooleanLogicInterpreter {
 	return body;
     }
 
-    private Operand interpreteFunction(Function f) {
+    private Operand interpreteFunction(Function f, boolean omitOutput) {
 	String name = f.getName();
 	Set<String> arguments = f.getArguments();
 	Operand body = f.getBody();
 	String signature = String.format("%s@%d", name, arguments.size());
 	functions.put(signature, body);
 	functionArguments.put(signature, arguments);
-	output.println(f.toTreeString());
+	println(f.toTreeString());
 	return body;
     }
 
-    private Operand interpreteVariable(Variable v) {
+    private Operand interpreteVariable(Variable v, boolean omitOutput) {
 	String name = v.getName();
 	if (variables.containsKey(name)) {
-	    output.println(variables.get(name).toTreeString());
+	    println(variables.get(name).toTreeString());
 	    return variables.get(name);
 	} else {
-	    output.println(v.toTreeString());
+	    println(v.toTreeString());
 	    return v;
 	}
     }
 
-    private Operand interpreteAssignmentOperator(AssignmentOperator a) {
+    private Operand interpreteAssignmentOperator(AssignmentOperator a, boolean omitOutput) {
 	Variable variable = (Variable) a.getLeftOperand();
 	Operand value = a.getRightOperand();
 	variables.put(variable.getName(), value);
-	output.println(String.format("%s = %s", variable.toTreeString(), value.toTreeString()));
+	println(String.format("%s = %s", variable.toTreeString(), value.toTreeString()));
 	return value;
     }
 
+    private void println(Object object) {
+	output.println(object);
+    }
+
+    private void println(String string) {
+	output.println(string);
+    }
+
+    private void println(boolean b) {
+	output.print(b);
+    }
 }
