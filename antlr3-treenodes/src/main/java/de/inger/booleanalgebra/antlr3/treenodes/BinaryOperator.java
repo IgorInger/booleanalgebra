@@ -1,6 +1,6 @@
 package de.inger.booleanalgebra.antlr3.treenodes;
 
-public abstract class BinaryOperator extends Operator {
+public abstract class BinaryOperator extends Operand implements Operator {
 
     public static final int LEFT_OPERAND_INDEX = 0;
     public static final int RIGHT_OPERAND_INDEX = 1;

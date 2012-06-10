@@ -1,6 +1,6 @@
 package de.inger.booleanalgebra.antlr3.treenodes;
 
-public abstract class UnaryOperator extends Operator {
+public abstract class UnaryOperator extends Operand implements Operator {
 
     private Operand operand;
 

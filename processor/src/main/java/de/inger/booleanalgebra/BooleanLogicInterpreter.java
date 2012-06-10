@@ -53,10 +53,9 @@ public class BooleanLogicInterpreter {
 	    return interpreteOrOperator((OrOperator) operand, false);
 	} else if (operand instanceof EqualsOperator) {
 	    return interpreteEqualsOperator((EqualsOperator) operand, false);
-	} else if(operand instanceof Constant) {
+	} else if (operand instanceof Constant) {
 	    return interpreteConstant((Constant) operand, false);
-	}
-	else {
+	} else {
 	    logger.debug(operand.getClass());
 	}
 	return operand;
@@ -70,7 +69,7 @@ public class BooleanLogicInterpreter {
     private Operand interpreteEqualsOperator(EqualsOperator operand, boolean omitOutput) {
 	Operand left = operand.getLeftOperand();
 	Operand right = operand.getRightOperand();
-	if((left instanceof Constant) && (right instanceof Constant)) {
+	if ((left instanceof Constant) && (right instanceof Constant)) {
 
 	}
 	println("? true/false");
@@ -92,7 +91,7 @@ public class BooleanLogicInterpreter {
 	}
 	Operand body = functions.get(signature);
 	Set<String> arguments = functionArguments.get(signature);
-	for(int i = 0; i < parameters.size(); i++) {
+	for (int i = 0; i < parameters.size(); i++) {
 	    parameters.set(i, interprete(parameters.get(i), true));
 	}
 	Operand operand = buildExpression(body, arguments, parameters);
@@ -140,15 +139,8 @@ public class BooleanLogicInterpreter {
 	return value;
     }
 
-    private void println(Object object) {
-	output.println(object);
-    }
-
     private void println(String string) {
 	output.println(string);
     }
 
-    private void println(boolean b) {
-	output.print(b);
-    }
 }
