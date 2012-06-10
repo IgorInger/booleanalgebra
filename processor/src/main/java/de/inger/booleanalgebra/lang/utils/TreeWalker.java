@@ -51,12 +51,12 @@ public class TreeWalker {
 
     private void traversBinaryOperator(BinaryOperator operator) {
 
-	if (operator.getLeftOperand() != null) {
-	    traverse(operator.getLeftOperand());
+	if (operator.getLeft() != null) {
+	    traverse(operator.getLeft());
 	}
 	visit(operator);
-	if (operator.getRightOperand() != null) {
-	    traverse(operator.getRightOperand());
+	if (operator.getRight() != null) {
+	    traverse(operator.getRight());
 	}
     }
 

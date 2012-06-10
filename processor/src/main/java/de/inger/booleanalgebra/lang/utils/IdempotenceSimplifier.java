@@ -15,8 +15,8 @@ public class IdempotenceSimplifier {
 	treeWalker.traverse(operand);
 	List<BinaryOperator> operators = counter.getBinaryOperators();
 	for (BinaryOperator binaryOperator : operators) {
-	    Operand l = binaryOperator.getLeftOperand();
-	    Operand r = binaryOperator.getRightOperand();
+	    Operand l = binaryOperator.getLeft();
+	    Operand r = binaryOperator.getRight();
 	    if (!(binaryOperator instanceof AssignmentOperator) && (l instanceof Variable)
 		    && (r instanceof Variable)) {
 		Variable lv = (Variable) l;

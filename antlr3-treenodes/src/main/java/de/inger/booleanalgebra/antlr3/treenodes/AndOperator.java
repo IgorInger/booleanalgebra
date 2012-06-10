@@ -8,8 +8,7 @@ public class AndOperator extends BinaryOperator {
 
     @Override
     public String toTreeString() {
-	return String.format("%s & %s", getLeftOperand().toTreeString(), getRightOperand()
-		.toTreeString());
+	return String.format("%s & %s", getLeft().toTreeString(), getRight().toTreeString());
     }
 
 }

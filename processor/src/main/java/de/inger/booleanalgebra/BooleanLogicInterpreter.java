@@ -67,8 +67,8 @@ public class BooleanLogicInterpreter {
     }
 
     private Operand interpreteEqualsOperator(EqualsOperator operand, boolean omitOutput) {
-	Operand left = operand.getLeftOperand();
-	Operand right = operand.getRightOperand();
+	Operand left = operand.getLeft();
+	Operand right = operand.getRight();
 	if ((left instanceof Constant) && (right instanceof Constant)) {
 
 	}
@@ -132,8 +132,8 @@ public class BooleanLogicInterpreter {
     }
 
     private Operand interpreteAssignmentOperator(AssignmentOperator a, boolean omitOutput) {
-	Variable variable = (Variable) a.getLeftOperand();
-	Operand value = a.getRightOperand();
+	Variable variable = (Variable) a.getLeft();
+	Operand value = a.getRight();
 	variables.put(variable.getName(), value);
 	println(String.format("%s = %s", variable.toTreeString(), value.toTreeString()));
 	return value;

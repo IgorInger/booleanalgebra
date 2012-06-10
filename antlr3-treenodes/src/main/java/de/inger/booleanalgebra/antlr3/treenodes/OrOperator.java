@@ -8,7 +8,7 @@ public class OrOperator extends BinaryOperator {
 
         @Override
         public String toTreeString() {
-            String value = String.format("%s || %s", getLeftOperand().toTreeString(), getRightOperand().toTreeString());
+            String value = String.format("%s || %s", getLeft().toTreeString(), getRight().toTreeString());
             if(getParent() != null) {
         	return String.format("(%s)", value);
             }
